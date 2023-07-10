@@ -1,6 +1,6 @@
 {
   "name": "com.onewinter.scriptobjpoolingframework",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "ScriptObjPoolingFramework",  
   "description": "Provides a lightweight framework for creating Pooled Objects using ScriptableObjects to set them up.",
   "unity": "2021.3",
@@ -18,11 +18,5 @@
   "keywords": [
     "pooling", "object pooling"
   ],
-  "samples": [
-    {
-      "displayName": "Projectile",
-      "description": "Create a pooled axe and launch it towards an enemy transform or point.",
-      "path": "Examples/Projectile.cs"
-    }
-  ]
+  "samples": []
 }

@@ -79,6 +79,6 @@ namespace OneWinter.ScriptObjPoolingFramework
     /// <typeparam name="T">The PooledObjectSetup inheritor that will spawn this</typeparam>
     public class PooledObjectBase<T> : PooledObjectBase where T : PooledObjectSetup
     {
-        public T TypeObject => (T)ObjectSetup;
+        public virtual T TypeObject => (T)ObjectSetup;
     }
 }
