@@ -38,6 +38,48 @@ public class Tile : PooledObjectBase<TileSetup> { }
 - Add a field for TileSetup(s) to a TileManager or similar type object, then add new Tiles to your scene by calling `SpawnNewTile()` from the desired TileSetup.
 - When it's time to remove the object from the scene, call `ReleaseToPool()` on the Tile to remove.
 
+## Pooling Object Lifecycle
+Unity's Pooling Framework provides a number of callback opportunities during the lifecycle of the pooled object.  This framework provides a standardized way to access them:
+### PooledObjectBase
+- `Awake()` the standard Unity Event function.  Called once, when the object is created in the pool.
+- `AssignObjectSetup()` assigns the PooledObjectSetup to a protected variable named ObjectSetup; use the TypeObject property to access it in the instance. Called once, when the object is created in the pool.
+- `InitializeObjectSetup()` a blank virtual function used to initialize any instance variables from the PooledObjectSetup TypeObject. Called once, when the object is created in the pool.
+- `BeforeEnable()` blank virtual function, called right before the object is enabled, every time it's removed from the pool.
+- `OnEnable()` standard Unity function, called right after the object is enabled, every time it's removed from the pool.
+- `FinalizeObjectSetup(vars)` add your own function to pass any instance variables every time you spawn a pooled object in your scene.
+- `BeforeDisable()` blank virtual function, called right before the object is disabled, every time it's sent back to the pool.
+- `OnDisable()` standard Unity function, called right after the object is disabled, every time it's sent back to the pool.
+- `BeforeDestroy()` blank virtual function, called right before the object is destroyed, every time it's not needed by the pool.
+- `OnDestroy()` standard Unity function, called right after the object is destroyed, every time it's not needed by the pool.
+
+## Adding Variables At Spawn Time
+Insert a Finalize()-like method in betwen `SpawnNewPooledObject()` and returning your spawned object in the function you use in your ScriptableObject to spawn new pooled objects.
+
+```
+[CreateAssetMenu(fileName = "Projectile_", menuName = "Projectile Setup", order = 51)]
+public class ProjectileSetup : PooledObjectSetup<Projectile>
+{
+    public Projectile SpawnNewProjecctile(Vector3 position, Vector3 target)
+    {
+        var newObject = SpawnNewPooledObject(position);
+        newObject.FinalizeObjectSetup(target);
+        return newObject;
+    }
+}
+
+public class Projectile : PooledObjectBase<ProjectileSetup>
+{
+    Vector3 target;
+
+    // initialize the projectile with its target
+    public void FinalizeObjectSetup(Vector3 newTarget)
+    {
+        target = newTarget;
+    }
+
+}
+```
+
 ## Example Scene
 An example scene is provided in the package that shows pooled Tiles, Enemies, and Projectiles.  It displays the flexibility of how this system can be used: 
 - By attaching cosmetic models at random when the object is created in the pool
