@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using OneWinter.ScriptObjPoolingFramework;
 
-namespace OneWinter.ScriptObjPoolingFramework.Examples
+namespace OneWinter.ScriptObjPoolingFrameworkExamples
 {
     public class DefenseManager : MonoBehaviour
     {

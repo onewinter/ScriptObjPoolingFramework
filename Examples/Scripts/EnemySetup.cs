@@ -1,7 +1,7 @@
 using UnityEngine;
 using OneWinter.ScriptObjPoolingFramework;
 
-namespace OneWinter.ScriptObjPoolingFramework.Examples
+namespace OneWinter.ScriptObjPoolingFrameworkExamples
 {
     [CreateAssetMenu(fileName = "Enemy_", menuName = "Enemy Setup", order = 51)]
     public class EnemySetup : PooledObjectSetup<Enemy>

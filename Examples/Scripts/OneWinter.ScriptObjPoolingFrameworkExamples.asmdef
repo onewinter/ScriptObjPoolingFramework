@@ -1,0 +1,16 @@
+{
+    "name": "OneWinter.ScriptObjPoolingFrameworkExamples",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7c9c4e75918156145a462f1bd45cf490"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
