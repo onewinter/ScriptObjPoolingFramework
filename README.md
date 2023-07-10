@@ -19,7 +19,7 @@ Alternatively, enter the following in your manifest.json:
 "com.onewinter.scriptobjpoolingframework": "https://github.com/onewinter/ScriptObjPoolingFramework.git/#v1.0.5"
 ```
  ## Simple Usage
- Create a new ScriptableObject-based Setup object by inheriting from PooledObjectSetup<T>.
+ Create a new ScriptableObject-based Setup object by inheriting from PooledObjectSetup<T> and calling `SpawnNewPooledObject()`.
 ```
 [CreateAssetMenu(fileName = "Tile_", menuName = "Tile Setup", order = 51)]
 public class TileSetup : PooledObjectSetup<Tile>
