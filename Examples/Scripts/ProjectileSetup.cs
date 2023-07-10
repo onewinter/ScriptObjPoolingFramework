@@ -1,6 +1,7 @@
 using UnityEngine;
+using OneWinter.ScriptObjPoolingFramework;
 
-namespace OneWinter.ScriptObjPoolingFramework
+namespace OneWinter.ScriptObjPoolingFramework.Examples
 {
     [CreateAssetMenu(fileName = "Projectile_", menuName = "Projectile Setup", order = 51)]
     public class ProjectileSetup : PooledObjectSetup<Projectile>

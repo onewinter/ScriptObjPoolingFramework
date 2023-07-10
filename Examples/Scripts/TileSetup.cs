@@ -1,6 +1,7 @@
 using UnityEngine;
+using OneWinter.ScriptObjPoolingFramework;
 
-namespace OneWinter.ScriptObjPoolingFramework
+namespace OneWinter.ScriptObjPoolingFramework.Examples
 {
     [CreateAssetMenu(fileName = "Tile_", menuName = "Tile Setup", order = 51)]
     public class TileSetup : PooledObjectSetup<Tile>

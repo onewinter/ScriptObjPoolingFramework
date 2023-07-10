@@ -1,6 +1,7 @@
 using UnityEngine;
+using OneWinter.ScriptObjPoolingFramework;
 
-namespace OneWinter.ScriptObjPoolingFramework
+namespace OneWinter.ScriptObjPoolingFramework.Examples
 {
     public class Tile : PooledObjectBase<TileSetup>
     {

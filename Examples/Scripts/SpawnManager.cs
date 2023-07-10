@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using OneWinter.ScriptObjPoolingFramework;
 using UnityEngine;
-using System.Linq;
+using OneWinter.ScriptObjPoolingFramework;
 
-namespace OneWinter.ScriptObjPoolingFramework
+namespace OneWinter.ScriptObjPoolingFramework.Examples
 {
 
 
