@@ -38,7 +38,7 @@ public class Tile : PooledObjectBase<TileSetup> { }
 - Add a field for TileSetup(s) to a TileManager or similar type object, then add new Tiles to your scene by calling `SpawnNewTile()` from the desired TileSetup.
 - When it's time to remove the object from the scene, call `ReleaseToPool()` on the Tile to remove.
 
-## Pooling Object Lifecycle
+## Pooled Object Lifecycle
 Unity's Pooling Framework provides a number of callback opportunities during the lifecycle of the pooled object.  This framework provides a standardized way to access them:
 ### PooledObjectBase
 - `Awake()` the standard Unity Event function.  Called once, when the object is created in the pool.
