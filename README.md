@@ -52,8 +52,8 @@ Unity's Pooling Framework provides a number of callback opportunities during the
 - `BeforeDestroy()` blank virtual function, called right before the object is destroyed, once when it's not needed by the pool.
 - `OnDestroy()` standard Unity function, called right after the object is destroyed, once when it's not needed by the pool.
 
-## Adding Variables At Spawn Time
-Insert a Finalize()-like method in betwen `SpawnNewPooledObject()` and returning your spawned object in the function you use in your ScriptableObject to spawn new pooled objects.
+## Passing Variables At Spawn Time
+Insert a Finalize()-like method in-between `SpawnNewPooledObject()` and returning your spawned object in the function you use in your ScriptableObject to spawn new pooled objects.
 
 ```
 [CreateAssetMenu(fileName = "Projectile_", menuName = "Projectile Setup", order = 51)]
