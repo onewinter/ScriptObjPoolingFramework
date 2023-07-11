@@ -49,8 +49,8 @@ Unity's Pooling Framework provides a number of callback opportunities during the
 - `FinalizeObjectSetup(vars)` add your own function to pass any instance variables every time you spawn a pooled object in your scene.
 - `BeforeDisable()` blank virtual function, called right before the object is disabled, every time it's sent back to the pool.
 - `OnDisable()` standard Unity function, called right after the object is disabled, every time it's sent back to the pool.
-- `BeforeDestroy()` blank virtual function, called right before the object is destroyed, once when it's not needed by the pool.
-- `OnDestroy()` standard Unity function, called right after the object is destroyed, once when it's not needed by the pool.
+- `BeforeDestroy()` blank virtual function, called right before the object is destroyed, once when it's no longer needed by the pool.
+- `OnDestroy()` standard Unity function, called right after the object is destroyed, once when it's no longer needed by the pool.
 
 ## Passing Variables At Spawn Time
 Insert a Finalize()-like method in-between `SpawnNewPooledObject()` and returning your spawned object in the function you use in your ScriptableObject to spawn new pooled objects.
