@@ -59,7 +59,7 @@ Insert a Finalize()-like method in betwen `SpawnNewPooledObject()` and returning
 [CreateAssetMenu(fileName = "Projectile_", menuName = "Projectile Setup", order = 51)]
 public class ProjectileSetup : PooledObjectSetup<Projectile>
 {
-    public Projectile SpawnNewProjecctile(Vector3 position, Vector3 target)
+    public Projectile SpawnNewProjectile(Vector3 position, Vector3 target)
     {
         var newObject = SpawnNewPooledObject(position);
         newObject.FinalizeObjectSetup(target);
