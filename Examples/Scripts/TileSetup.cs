@@ -3,7 +3,7 @@ using OneWinter.ScriptObjPoolingFramework;
 
 namespace OneWinter.ScriptObjPoolingFrameworkExamples
 {
-    [CreateAssetMenu(fileName = "Tile_", menuName = "Tile Setup", order = 51)]
+    //[CreateAssetMenu(fileName = "Tile_", menuName = "Tile Setup", order = 51)]
     public class TileSetup : PooledObjectSetup<Tile>
     {
         public Tile SpawnNewTile(Vector3 position)

@@ -1,6 +1,6 @@
 {
   "name": "com.onewinter.scriptobjpoolingframework",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "displayName": "ScriptObjPoolingFramework",  
   "description": "Provides a lightweight framework for creating Pooled Objects using ScriptableObjects to set them up.",
   "unity": "2021.3",
