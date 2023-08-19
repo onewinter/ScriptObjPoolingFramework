@@ -47,7 +47,7 @@ namespace OneWinter.ScriptObjPoolingFramework
         /// </summary>
         /// <param name="objects">The enumerable/list of objects to filter</param>
         /// <returns>The active pooled objects in the passed enumerable/list</returns>
-        public static IEnumerable<PooledObjectBase> GetActive(this IEnumerable<PooledObjectBase> objects)
+        public static IEnumerable<T> GetActive<T>(this IEnumerable<T> objects) where T : PooledObjectBase
         {
             return objects.Where(obj => obj.IsActive());
         }
