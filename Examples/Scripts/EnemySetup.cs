@@ -3,7 +3,7 @@ using OneWinter.ScriptObjPoolingFramework;
 
 namespace OneWinter.ScriptObjPoolingFrameworkExamples
 {
-    //[CreateAssetMenu(fileName = "Enemy_", menuName = "Enemy Setup", order = 51)]
+    [CreateAssetMenu(menuName = "*ScriptObjPooling Examples/Enemy Setup", order = 999)]
     public class EnemySetup : PooledObjectSetup<Enemy>
     {
         public float TimeToCenter;
