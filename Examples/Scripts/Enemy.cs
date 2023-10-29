@@ -8,10 +8,17 @@ namespace OneWinter.ScriptObjPoolingFrameworkExamples
         private Vector3 startPosition;
         private float timer;
 
+        public override void BeforeEnable()
+        {
+            base.BeforeEnable();
+            timer = 0;
+        }
+
         private void Update()
         {
             timer += Time.deltaTime;
-            if (transform.position != MapManager.GridCenter)
+            
+            if (timer <= TypeObject.TimeToCenter)
                 transform.position =
                     Vector3.Lerp(startPosition, MapManager.GridCenter, timer / TypeObject.TimeToCenter);
             else
@@ -21,7 +28,6 @@ namespace OneWinter.ScriptObjPoolingFrameworkExamples
         public void FinalizeObjectSetup()
         {
             startPosition = transform.position;
-            timer = 0;
         }
     }
 }

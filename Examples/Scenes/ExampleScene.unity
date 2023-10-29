@@ -293,9 +293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2072bb11f62d8e4c9c900595f9e5335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxActive: 500
+  MaxActive: 1000
   projectileSetup: {fileID: 11400000, guid: 1841992c2eab6744abb55bc00b2d6952, type: 2}
-  projectileRange: 25
+  projectileRange: 10
   enemyLayer:
     serializedVersion: 2
     m_Bits: 32

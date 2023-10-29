@@ -22,7 +22,7 @@ namespace OneWinter.ScriptObjPoolingFrameworkExamples
 
         private void Update()
         {
-            if (projectileSetup.CountActive >= MaxActive) return;
+            if (projectileSetup.ActiveObjects.Count >= MaxActive) return;
 
             Array.Clear(collidersInRange, 0, collidersInRange.Length);
             var size = Physics.OverlapSphereNonAlloc(transform.position, projectileRange / 2f, collidersInRange,
@@ -31,8 +31,10 @@ namespace OneWinter.ScriptObjPoolingFrameworkExamples
 
             for (var i = 0; i < size; i++)
             {
-                projectileSetup.SpawnNewProjectile(transform.position, collidersInRange[i].transform);
-                if (projectileSetup.CountActive >= MaxActive) break;
+                if (collidersInRange[i].TryGetComponent(out Enemy enemy) && enemy.IsActive())
+                    projectileSetup.SpawnNewProjectile(MapManager.GridCenter, collidersInRange[i].transform);
+                
+                if (projectileSetup.ActiveObjects.Count >= MaxActive) break;
             }
         }
     }

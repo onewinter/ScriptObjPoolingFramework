@@ -35,21 +35,42 @@ namespace OneWinter.ScriptObjPoolingFramework
         /// <summary>
         /// Normal `if(GameObject)` syntax doesn't work with Object Pooling; we need to check if the GameObject is active too
         /// </summary>
-        /// <param name="obj">The Pooled Object to check for null and active</param>
+        /// <param name="pooledObject">The Pooled Object to check for null and active</param>
         /// <returns>True if the Pooled Object is not null and is active</returns>
-        public static bool IsActive(this PooledObjectBase obj)
+        public static bool IsActive(this PooledObjectBase pooledObject)
         {
-            return obj && obj.isActiveAndEnabled;
+            return pooledObject && pooledObject.isActiveAndEnabled;
         }
 
         /// <summary>
         /// Helper method to retrieve only Active pooled objects from a enumerable/list
         /// </summary>
-        /// <param name="objects">The enumerable/list of objects to filter</param>
+        /// <param name="pooledObjects">The enumerable/list of objects to filter</param>
         /// <returns>The active pooled objects in the passed enumerable/list</returns>
-        public static IEnumerable<T> GetActive<T>(this IEnumerable<T> objects) where T : PooledObjectBase
+        public static IEnumerable<T> GetActive<T>(this IEnumerable<T> pooledObjects) where T : PooledObjectBase
         {
-            return objects.Where(obj => obj.IsActive());
+            return pooledObjects.Where(obj => obj.IsActive());
         }
+
+        public static float ActiveCount<T>(this IEnumerable<T> pooledObjects) where T : PooledObjectBase
+        {
+            return pooledObjects?.Count(obj => obj.IsActive()) ?? 0;
+        }
+    
+        public static bool AnyActive<T>(this IEnumerable<T> pooledObjects) where T : PooledObjectBase
+        {
+            return pooledObjects.Any(obj => obj.IsActive());
+        }
+        
+        public static T GetWrapped<T>(this T[] array, int index)
+        {
+            return array[((index % array.Length) + array.Length) % array.Length];
+        }
+    
+        public static T GetWrapped<T>(this IList<T> array, int index)
+        {
+            return array[((index % array.Count) + array.Count) % array.Count];
+        }
+
     }
 }

@@ -5,11 +5,11 @@ namespace OneWinter.ScriptObjPoolingFrameworkExamples
 {
     public class Projectile : PooledObjectBase<ProjectileSetup>
     {
-        private float damageTimer;
-        private bool init;
-        private Vector3 projectileStart;
+        public float damageTimer;
+        public bool init;
+        public Vector3 projectileStart;
         private Enemy target;
-        private Vector3 targetPosition;
+        public Vector3 targetPosition;
         private TrailRenderer trail;
 
         private float DistanceToTarget => (transform.position - targetPosition).sqrMagnitude;

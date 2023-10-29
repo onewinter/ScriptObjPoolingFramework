@@ -21,7 +21,7 @@ namespace OneWinter.ScriptObjPoolingFrameworkExamples
         {
             for (int i = 0; i < maxSpawnAtOnce; i++)
             {
-                if (enemySetup.CountActive >= maxActiveSpawn) break;
+                if (enemySetup.ActiveObjects.Count >= maxActiveSpawn) break;
 
                 var newRandom = Random.insideUnitCircle;
                 var newSpawn =

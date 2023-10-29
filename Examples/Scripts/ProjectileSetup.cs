@@ -4,7 +4,7 @@ using OneWinter.ScriptObjPoolingFramework;
 namespace OneWinter.ScriptObjPoolingFrameworkExamples
 {
     [CreateAssetMenu(menuName = "*ScriptObjPooling Examples/Projectile Setup", order = 999)]
-    public class ProjectileSetup : PooledObjectSetup<Projectile>
+    public class ProjectileSetup : ListPooledObjectSetup<Projectile>
     {
         public AnimationCurve ShotArc;
         public float RotationSpeed = 750f;

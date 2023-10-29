@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -15,9 +17,6 @@ namespace OneWinter.ScriptObjPoolingFramework
         private ObjectPool<PooledObjectBase> objectPool;
         private Transform poolOrganizer;
 
-        public int CountActive => objectPool.CountActive;
-        public int CountTotal => objectPool.CountAll;
-
         private void OnEnable()
         {
             // create a new pool
@@ -25,7 +24,7 @@ namespace OneWinter.ScriptObjPoolingFramework
                 OnObjectReturnedToPool, OnDestroyObject);
         }
 
-        private void OnTakeObjectFromPool(PooledObjectBase pooledObject)
+        protected virtual void OnTakeObjectFromPool(PooledObjectBase pooledObject)
         {
             if (!pooledObject) return; // sometimes the pool destroys an object before we can grab it... 
 
@@ -35,7 +34,7 @@ namespace OneWinter.ScriptObjPoolingFramework
             // then OnEnable() runs
         }
 
-        private void OnObjectReturnedToPool(PooledObjectBase pooledObject)
+        protected virtual void OnObjectReturnedToPool(PooledObjectBase pooledObject)
         {
             if (!pooledObject) return; // sometimes the pool destroys an object before we can return it...
 
@@ -137,5 +136,30 @@ namespace OneWinter.ScriptObjPoolingFramework
             var newObject = (T)GetPooledObject(position, parent);
             return newObject;
         }
+    }
+    
+    /// <summary>
+    ///     Convenience Class for if you need to maintain a List of Active Pooled Objects
+    /// </summary>
+    /// <typeparam name="T">The PooledObjectBase inheritor this will spawn</typeparam>
+    public class ListPooledObjectSetup<T> : PooledObjectSetup<T>, ISerializationCallbackReceiver where T : PooledObjectBase
+    {
+        public List<T> ActiveObjects = new();
+
+        protected sealed override void OnObjectReturnedToPool(PooledObjectBase pooledObject)
+        {
+            if (ActiveObjects.Contains(pooledObject)) ActiveObjects.Remove((T)pooledObject);
+            base.OnObjectReturnedToPool(pooledObject);
+        }
+
+        protected sealed override void OnTakeObjectFromPool(PooledObjectBase pooledObject)
+        {
+            base.OnTakeObjectFromPool(pooledObject);
+            if (!ActiveObjects.Contains(pooledObject)) ActiveObjects.Add((T)pooledObject);
+        }
+
+        public void OnBeforeSerialize() { }
+        public void OnAfterDeserialize() => ActiveObjects.Clear(); // ensure the List is cleared when we exit Play
+        
     }
 }
