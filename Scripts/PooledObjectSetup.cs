@@ -17,7 +17,7 @@ namespace OneWinter.ScriptObjPoolingFramework
         private ObjectPool<PooledObjectBase> objectPool;
         private Transform poolOrganizer;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             // create a new pool
             objectPool = new ObjectPool<PooledObjectBase>(CreatePooledObject, OnTakeObjectFromPool,
