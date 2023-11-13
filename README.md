@@ -10,13 +10,13 @@ As an added bonus, moving some of the logic and data from the Monobehaviour Inst
 Tested in Unity 2021.3+.
 
 ## Installation
-Install via the Unity Package Manager by selecting "Add package from Git url..." and entering this git repository in the dialog box.  (Current version: `https://github.com/onewinter/ScriptObjPoolingFramework.git/#v1.0.9`)
+Install via the Unity Package Manager by selecting "Add package from Git url..." and entering this git repository in the dialog box.  (Current version: `https://github.com/onewinter/ScriptObjPoolingFramework.git/#v1.1.0`)
 
 Be sure to use a version tag in your URL so that you have control over any future API changes. 
 
 Alternatively, enter the following in your manifest.json:
 ```
-"com.onewinter.scriptobjpoolingframework": "https://github.com/onewinter/ScriptObjPoolingFramework.git/#v1.0.9"
+"com.onewinter.scriptobjpoolingframework": "https://github.com/onewinter/ScriptObjPoolingFramework.git/#v1.1.0"
 ```
  ## Simple Usage
  Create a new ScriptableObject-based Setup object by inheriting from PooledObjectSetup<T> and calling `SpawnNewPooledObject()`.
